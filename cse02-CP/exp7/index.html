@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Structures</title>
+  <title>Strings</title>
   <link rel="stylesheet" type="text/css" href="../../normalize.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap -->
@@ -26,14 +26,14 @@
       <nav class="navbar navbar-default visible-lg" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Structures</a>
+          <a class="navbar-brand" href="#">Strings</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse desk-nav">
           <ul class="nav navbar-nav">
             <li style="border-right: 1.5px solid white;"><a href="index.html">Lab Manual</a></li>
-            <li style="border-right: 1.5px solid white;"><a href="simulation/index.html">Simulation</a></li>
+            <li style="border-right: 1.5px solid white;"><a href="simulation.html">Simulation</a></li>
             <li><a href="quiz.html">Quiz</a></li>
           </ul>
           <a href="../index.html"><span class="glyphicon glyphicon-home pull-right"></span></a>
@@ -43,10 +43,10 @@
       <div class="hidden-lg">
       <nav class="navbar navbar-default mobile-nav" role="navigation">
       <div class="nav navbar-nav pull-right">
-    <a href="index.html"><span class="glyphicon glyphicon-list-alt"></span></a><a href="simulation/index.html"><span class="glyphicon glyphicon-play-circle"></span></a><a href="quiz.html"><span class="glyphicon glyphicon-tower"></span></a><a href="../index.html"><span class="glyphicon glyphicon-home"></span></a>
+    <a href="index.html"><span class="glyphicon glyphicon-list-alt"></span></a><a href="simulation.html"><span class="glyphicon glyphicon-play-circle"></span></a><a href="quiz.html"><span class="glyphicon glyphicon-tower"></span></a><a href="../index.html"><span class="glyphicon glyphicon-home"></span></a>
   </div>
     </nav>
-    <p class="experiment-mobile-title"> Structures</p>
+    <p class="experiment-mobile-title">Strings</p>
     </div>
 
 <div class="row">
@@ -66,10 +66,7 @@
       <p class="manual-section-title">Introduction</p><hr />
       <div class="manual-section-description">
         <p>
-          A variable of a certain data type such as int or char can store only one element of that data type. An array, on the other hand, can store multiple elements of a fixed data type. An array, thus, allows a programmer to address a collection of similar elements by a single name, while also allowing him to address each of the elements by their index in the array. 
-        </p>
-        <p>
-          Can we create a collection of data elements of various data types and refer to this collection by a single name? The answer to this question is 'yes' and this is possible by the use of structures. A structure allows you to make a collection of various elements of different data types and refer to them by a single name. A structure can contain arrays as well. Hence, a structure in some sense acts like a new data type which has multiple components of various other data types. So, it is possible to make an array of structure variables also.
+          A string is a sequence of characters -- it can contain a word, your name, a sentence, a paragraph or even an entire composition. A question that arises is that how the contents of a string can be stored. An array of characters seems like a very good choice. Apart from allowing you to store strings, C programming language provides you a large collection of associated string maniputaion functions under the string.h library. These functions will allow you to treat strings like variables and allow operations like addition(concatenation) of two strings, searching a string in another string, compare two strings etc.
         </p>
       </div>
     </div>
@@ -78,47 +75,72 @@
       <p class="manual-section-title">Theory</p><hr />
       <div class="manual-section-description">
         <p>
-          Arrays are used to store large sets of data and manipulate them but the disadvantage is that all the elements stored in an array are to be of the same data type. When we need a collection of different data items of different data types, such as integer, float etc.,  we can use a structure. Structure can be seen as datatype composed of different datatypes. For example, suppose you want to store information about students enrolling in a university. Then, you may naturally want to store information like Student Name, Roll Number, Gender, Batch, etc. Ofcourse, you can create separate arrays for storing each of these quantities, but notice that for each student this diverse data is highly related. So, using a structre to pack these data entries into a single variables would be a good choice. In this case we can define the structure as,
+          In C programming, a string is essentially an array of <a href="en.wikipedia.org/wiki/ASCII" >ASCII code</a> characters. Each character is stored by writing the corresponding 8-bit ASCII code of the character. So, One can initialize a string just like an array:
         </p>
         <p>
           <pre class="prettyprint lang-c">
-            struct student_record{
-            char Name[100];
-            int Roll;
-            char gender;
-            char Stream[100];
-            };
+            char str[50]={'C',' ','P','r','o','g','r','a','m'};
           </pre>
         </p>
         <p>
-          This definition will practically create a new datatype students_record having a 2 character arrays, one integer and one character. So, in the main function one can define variables of this new compound datatype as,
+          C programming allows a convenient alternative for this:
         </p>
         <p>
           <pre class="prettyprint lang-c">
-            student_record student1, student2;
+            char str[50]="C programming";
           </pre>
         </p>
         <p>
-          You can even define an array of structure variables like,
+          As you can notice, you can put spaces in a string. The C compiler terminates every string with a null character('\0') which has an ASCII value of 0. This is done to mark the end of the string. So, the given string would be represented as:
+        </p>
+        <p>
+          <table border=1>
+            <tr><td width=50>C</td ><td width=50> </td><td width=50>P</td><td width=50>r</td><td width=50>o</td><td width=50>g</td><td width=50>r</td><td width=50>a</td><td width=50>m</td><td width=50>m</td><td width=50>i</td><td width=50>n</td><td width=50>g</td><td width=50>\0</td></tr>
+            <tr><td width=50>67</td ><td width=50>32</td><td width=50>80</td><td width=50>114</td><td width=50>111</td><td width=50>103</td><td width=50>114</td><td width=50>97</td><td width=50>109</td><td width=50>109</td><td width=50>105</td><td width=50>110</td><td width=50>103</td><td width=50>0</td></tr>
+          </table><br>
+        </p>
+        <p>
+          Every string, thus, requires 1 extra storage space to store the NULL character. So, if you want to store a string of 20 characters then you must define an array of 21 characters. To input a string from the keyboard, you can use the scanf statement:
         </p>
         <p>
           <pre class="prettyprint lang-c">
-            students_record students[100];
+            scanf("%s",str);
           </pre>
         </p>
         <p>
-          Now, the individual elements of a structure variable can be addressed by the dot(.) operator. For example, the variable student1 can initialized using the following statements:
+          This will input a string till a space or next line character is entered. Suppose you want to input a string like "Today is a sunny day.". Then you should use the gets() function which is defined in the string.h library.
         </p>
         <p>
           <pre class="prettyprint lang-c">
-            strcpy(student1.Name,"Abc");
-            student1.Roll=24;
-            student1.gender='m';
-            strcpy(student1.Stream,"Computer Science");
+            gets(str);
           </pre>
         </p>
         <p>
-          An interesting thing to note is that the memory allocation for the whole structure is done contigously. So, size of one variable of type student_record is 100+4+1+100=205 bytes. And, if r1 and r2 are two variables of the structure struct_record, then writing r1=r2 is equivalent to copying the data in 205 bytes corresponding to r2 and copying them into r1.
+          The string.h library also has many other useful functions. The strlen() is used to find the length of a string(str in this case) and return an integer.
+        </p>
+        <p>
+          <pre class="prettyprint lang-c">
+            int result=strlen(str);
+          </pre>
+        </p>
+        <p>
+          The variable result will get a value 13 in this case. The strcmp() function can be used to compare 2 strings(str1 and str2 in this case):
+        </p>
+        <p>
+          <pre class="prettyprint lang-c">
+            int result=strcmp(str1,str2);
+          </pre>
+        </p>
+        <p>
+          The strcmp() function returns 1 if the two strings are identical and 0 otherwise. The strcat() function is used to concatenate 2 string. Writing
+        </p>
+        <p>
+          <pre class="prettyprint lang-c">
+            strcmp(str1,str2);
+          </pre>
+        </p>
+        <p>
+          will add the contents of str2 to str1. Before writing this sentence make sure the there is enough memory allocated at str1 so as to hold both str1 and str2, and also a NULL character. Other useful string functions are listed <a href="http://en.wikipedia.org/wiki/String.h">here</a>.
         </p>
       </div>
     </div>
@@ -127,9 +149,8 @@
       <div class="manual-section-description">
         <p>
           <ol>
-            <li>  To understand how to use structures as a compund datatype. </li>
-            <li>  To be able to design structures according to your requirement. </li>
-            <li>  To understand when structures are better datastructures than arrays. </li>
+            <li> To understand the concept of strings and how they are a special type of character arrays.   </li>
+            <li> To understand the usage of string libraries to do common string operations. </li>
           </ol>
         </p>
       </div>
@@ -138,21 +159,35 @@
     <div id="man" class="manual-section">
       <p class="manual-section-title">Manual</p><hr />
       <div class="manual-section-description">
-        <p> 
-          In this experiment you will understand how to define structures according to problem requirements. You will also do operations on structure elements.
-        </p> 
+        <p>
+          In this lab you will do string manipulations by calling string functions with proper arguments.
+        </p>
       </div>
     </div>
     <div id="proc" class="manual-section">
       <p class="manual-section-title">Procedure</p><hr />
       <div class="manual-section-description">
         <p>
+          <b>String Matching </b>
+        </p>
+        <p>
           <ol>
-            <li>  Press start to start the experiment and select a value of N. </li>
+            <li>  Press start to start the experiment and select two string str1 and str2 to compare. </li>
             <li>  Press next to see the execution of the code </li>
             <li>  Relavant line in the code is shown here </li>
             <li>  The output of the code is shown in the right </li>
           </ol>
+        </p>
+        <p>
+          <b>String Comparison</b>
+        </p>
+        <p>
+          <ol>
+            <li>   Press start to start the experiment and select two string str1 and str2 to compare. </li>
+            <li>   Press next to see the execution of the code </li>
+            <li>   The output of the code is shown in the right </li>
+            <li>   You can stop the code using stop button </li>
+          </ol>   
         </p>
       </div>
     </div>
@@ -161,8 +196,8 @@
       <p class="manual-section-title">Further Reading</p><hr />
       <div class="manual-section-description">
         <ol>
-          <li><a href="http://www.exforsys.com/tutorials/c-plus-plus/c-structures.html"> http://www.exforsys.com/tutorials/c-plus-plus/c-structures.html </a></li>
-          <li><a href="http://en.wikipedia.org/wiki/Structure"> http://en.wikipedia.org/wiki/Structure </a></li>
+          <li><a href="http://en.wikipedia.org/wiki/String_%28computer_science%29"> http://en.wikipedia.org/wiki/String_(computer_science)</a></li>
+          <li><a href="http://www.exforsys.com/tutorials/c-language/handling-of-character-strings-in-c.html">http://www.exforsys.com/tutorials/c-language/handling-of-character-strings-in-c.html</a></li>
         </ol>
       </div>
     </div>
