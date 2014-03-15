@@ -293,20 +293,28 @@ window.view = {
 			return false;
 		} 
 		else if (valueA2 >= valueB2 || valueB2 > 30) {
-			alert('Integration Limits are from 0 to 30 and b > a');
+			alert('Integration Limits are from 0 to 30, b > a and b-a >= 1');
 			return false;
 		}
 		else {
 			model.inputValueA = valueA2;
 			model.inputValueB = valueB2;
 		}
+		this.changePropertyOfElements();
+		this.clearOutputValues();
+		this.restoreCanvas();
+	},
+	// changePropertyOfElements: changes property of elemants with enableElement, disableElement and changeClass.
+	changePropertyOfElements: function () {
 		this.enableElement('startBtnId');
 		this.disableElement('okBtnId');
 		this.disableElement('valueA');
 		this.disableElement('valueB');
 		this.changeClass('okBtnId', 'buttonDisable startButton');
 		this.changeClass('startBtnId', 'button myStartButton');
-		this.clearOutputValues();
+	},
+	// restoreCanvas: restor canvas it's initial state after clear previously drawed canvas.
+	restoreCanvas: function () {
 		this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height); // to clear previously drawed canvas.
 		this.canvasContext.restore(); // restor canvas it's initial state.
 		this.drawCanvas(); // redraw graph on canvas.
@@ -330,6 +338,9 @@ window.view = {
 	and at the end of code execution display final result. */  
 	plotCurveArea: function () {
 		this.currentSiblingElement = this.getElementByClass('redClass');
+		if (this.currentSiblingElement.id === 'NumApproCodeContent10') {
+			this.endOfExecution();
+		}
 		this.nextSiblingElement = this.getNextSiblingElement(this.currentSiblingElement);
 		if (this.nextSiblingElement.id === 'NumApproCodeContent2') {
 			this.executionWithColour();
@@ -371,7 +382,6 @@ window.view = {
 		}
 		else if (this.nextSiblingElement.id === 'NumApproCodeContent10') {
 			this.executionWithColour();
-			this.endOfExecution();
 		}
 	},
 	// init: calls methods to draw canvas and activate events.

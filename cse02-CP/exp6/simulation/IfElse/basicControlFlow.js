@@ -14,15 +14,19 @@ window.view = {
 	canvasContext: '', // canvasContext have many properties and methods for drawing paths, boxes, circles, text, images, and more.
 	canvas: new Object(), // Object value of canvas.
 	selectedLoop: new Object(), // Object of selected list.
-	// addClickEvent: add EventListener to other methods.
+	// addClickEvent: add click EventListener to other methods.
 	addClickEvent: function (id, method) {
 		var element = document.getElementById(id);
 		element.addEventListener('click', method, false);
 	},
+	// addChangeEvent: add change EventListener to other methods.
+	addChangeEvent: function(id, method) {
+		var element = document.getElementById(id)
+		element.addEventListener('change', method, false);
+	},
 	// activateEvents: calls addClickEvent method to add EventListener to other methods.
 	activateEvents: function() {
-		this.addClickEvent('ifElseList', function() { view.showExecutionSection() });
-		this.addClickEvent('ifElseIfList', function() { view.showExecutionSection() });
+		this.addChangeEvent('loopList', function() { view.showExecutionSection() });
 		this.addClickEvent('okBtnId', function() { view.validationInput() });
 		this.addClickEvent('startBtnId', function() { view.startExecution() });
 		this.addClickEvent('stopBtnId', function() { view.stopExecution() });
@@ -190,15 +194,19 @@ window.view = {
 		this.changeClass('startBtnId', 'buttonDisable startButton margin15');
 		this.changeClass('nextBtnId', 'buttonDisable nextButton margin15');
 	},
+	// restoreCanvas: clear previously drawn canvas and restor it's initial state.
+	restoreCanvas: function () {
+		this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height); // to clear previously drawn canvas.
+		this.canvasContext.restore(); // restor canvas it's initial state.
+		this.displayFigures(); // redraw graph on canvas.
+	},
 	// endOfExecution: work at end of code execution and with stop button to reset whole experiment at it's initial state.
 	endOfExecution: function () {
 		this.resetButtonAndTextField();
 		this.resetTextFieldValue();
-		this.clearOutputValues();
+		//this.clearOutputValues();
 		this.resetVariables();
-		this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height); // to clear previously drawed canvas.
-		this.canvasContext.restore(); // restor canvas it's initial state.
-		this.displayFigures(); // displays Figures graph on canvas.
+		//this.displayFigures(); // displays Figures graph on canvas.
 		this.enableElement('loopList');
 		var idOfRedText = this.getElementByClass('redClass').id;
 		this.removeColorClass(idOfRedText, 'redClass');
@@ -279,6 +287,16 @@ window.view = {
 		}
 		model.valueOfX = Number(valueOfX);
 		model.valueOfY = Number(valueOfY);
+		this.clearOutputValues();
+		this.restoreCanvas();
+		this.changePropertyOfElements();
+		this.setInnerHtml('xInnerText', model.valueOfX);
+		this.setInnerHtml('yInnerText', model.valueOfY);
+		this.drawCircle(model.valueOfX, model.valueOfY, '#FF2400');
+		this.displayTextWithColour('(x, y)', model.valueOfX + 10, model.valueOfY, '#FF2400');
+    },
+    // changePropertyOfElements: changes property of elemants with enableElement, disableElement and changeClass.
+	changePropertyOfElements: function () {
 		this.disableElement('loopList');
 		this.disableElement('textFieldXId');
 		this.disableElement('textFieldYId');
@@ -286,12 +304,8 @@ window.view = {
 		this.changeClass('startBtnId', 'button startButton margin15');
 		this.disableElement('okBtnId');
 		this.changeClass('okBtnId', 'buttonDisable okButton');
-		this.changeClass('loopList', 'buttonDisable expList');
-		this.setInnerHtml('xInnerText', model.valueOfX);
-		this.setInnerHtml('yInnerText', model.valueOfY);
-		this.drawCircle(model.valueOfX, model.valueOfY, '#FF2400');
-		this.displayTextWithColour('(x, y)', model.valueOfX + 10, model.valueOfY, '#FF2400');
-    },
+		this.changeClass('loopList', 'buttonDisable expList');	
+	},
     // startExperiment: work to start code execution.
 	startExecution: function () {
 		this.changeClass('startBtnId', 'buttonDisable startButton margin15 hide');
@@ -323,12 +337,13 @@ window.view = {
 	// continueExecutionIfElse: shows code execution and gives final result at end of code.
 	executionOfIfElse: function () {
 		this.currentSiblingElement = this.getElementByClass('redClass');
+		if (this.currentSiblingElement.id === 'codeContentIfElse28Id') {
+			this.endOfExecution();
+		}
 		this.nextSiblingElement = this.getNextSiblingElement(this.currentSiblingElement);
 		this.nextOfnextSiblingElement = this.getNextSiblingElement(this.nextSiblingElement);
 		if (this.nextSiblingElement.id === 'codeContentIfElse23Id' || this.nextSiblingElement.id === 'codeContentIfElse27Id') {
 			this.codeExecutionWithColourAndId('codeContentIfElse28Id');
-			alert('Code running is Over !');
-			this.endOfExecution();
 		}
 		else {
 			if (this.nextSiblingElement.id === 'codeContentIfElse2Id' || this.nextSiblingElement.id === 'codeContentIfElse3Id') {	
@@ -392,6 +407,9 @@ window.view = {
 	// executionOfIfElseIfElse: shows code execution and gives final result at end of code.
 	executionOfIfElseIfElse: function () {
 		this.currentSiblingElement = this.getElementByClass('redClass');
+		if (this.currentSiblingElement.id === 'codeContentIfElseIf23Id') {
+			this.endOfExecution();
+		}
 		this.nextSiblingElement = this.getNextSiblingElement(this.currentSiblingElement);
 		this.nextOfnextSiblingElement = this.getNextSiblingElement(this.nextSiblingElement);
 		if (this.nextSiblingElement.id === 'codeContentIfElseIf2Id') {
@@ -436,8 +454,6 @@ window.view = {
 		}
 		if (this.nextSiblingElement.id === 'codeContentIfElseIf18Id' || this.nextSiblingElement.id === 'codeContentIfElseIf22Id') {
 			this.codeExecutionWithColourAndId('codeContentIfElseIf23Id');
-			alert('Code running is Over !');
-			this.endOfExecution();
 		}	
 	},
 	// init: calls methods to draw canvas and activate events.

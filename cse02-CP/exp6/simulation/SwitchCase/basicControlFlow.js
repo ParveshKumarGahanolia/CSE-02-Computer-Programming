@@ -123,7 +123,7 @@ window.view = {
   				this.showDay('case7Id', this.currentSiblingElement.id, 'sundayImages', 'strNullId', 'Sunday');
   				break;
   			default:
-  				this.showDay('defaultId', this.currentSiblingElement.id, null, 'strNullId', 'Null');
+  				this.showDay('defaultId', this.currentSiblingElement.id, null, 'strNullId', 'null');
         		break;	
 		}
 	},
@@ -136,13 +136,19 @@ window.view = {
 			return false;
 		} 
 		else {
-			this.disableElement('submitBtnId');
-			this.enableElement('startBtnId');
-			this.changeClass('startBtnId', 'button margin15');
-			this.changeClass('submitBtnId', 'buttonDisable margin15');
+			this.changePropertyOfElements();
 			model.inputNumber = Number(textFieldValue);
 			this.setInnerHtml('idOfDay', model.inputNumber);
 		}		
+	},
+	// changePropertyOfElements: changes property of elemants with enableElement, disableElement and changeClass.
+	changePropertyOfElements: function () {
+		this.disableElement('submitBtnId');
+		this.enableElement('startBtnId');
+		this.changeClass('startBtnId', 'button margin15');
+		this.changeClass('submitBtnId', 'buttonDisable margin15');
+		this.resetStrings();
+		this.resetOpacityOfImages();
 	},
 	// resetRadioButton: reset radio button to it's initial state at the end of code execution.
 	resetRadioButton: function () {
@@ -169,10 +175,10 @@ window.view = {
 	},
 	// resetStrings: clear all output values that displayed during the execution.
 	resetStrings: function () {
-		this.setInnerHtml('strNullId', 'null');
-		this.setInnerHtml('idOfDay', '-1');
+		this.setInnerHtml('strNullId', '');
+		this.setInnerHtml('idOfDay', '');
 		this.setInnerHtml('outputDayId', '');
-		this.setValue('textFieldId', '');
+		//this.setValue('textFieldId', '');
 	},
 	// resetButton: reset button it's initial state at the end of code execution.
 	resetButton: function () {
@@ -186,11 +192,12 @@ window.view = {
 	endOfExecution: function () {
 		this.resetVariables();
 		this.resetRadioButton();
-		this.resetStrings();
+		//this.resetStrings();
+		this.setValue('textFieldId', '');
 		this.resetButton();
 		var idOfRedText = this.getElementByClass('redClass').id;
 		this.removeColorClass(idOfRedText, 'redClass');
-		this.resetOpacityOfImages();
+		//this.resetOpacityOfImages();
 	},
 	// startStepExecution: work to start code execution.
 	startStepExecution: function () {
@@ -202,6 +209,9 @@ window.view = {
 	// showDayOfWeek: shows code execution and gives final result at end of code.
 	showDayOfWeek: function () {
 		this.currentSiblingElement = this.getElementByClass('redClass');
+		if (this.currentSiblingElement.id === 'closeBrc2Id') {
+	 		this.endOfExecution();
+	 	}
 		this.nextSiblingElement = this.getNextSiblingElement(this.currentSiblingElement);
 		if (this.nextSiblingElement.id === 'charId' || this.nextSiblingElement.id === 'strId' || this.nextSiblingElement.id === 'switchId')
 			this.codeExecutionWithColour();
@@ -241,16 +251,15 @@ window.view = {
 			this.codeExecutionWithColour();
 		if (this.nextSiblingElement.id === 'closeBrc2Id' || this.nextSiblingElement.id === 'elseId' || this.nextSiblingElement.id === 'elseIfId') {
 			this.codeExecutionWithColourAndId('closeBrc2Id');
-			alert('Code running is Over !');
-			this.endOfExecution();
 	 	}
 	},
+	// init: calls methods to draw canvas and activate events.
 	init: function () {
 		this.activateEvents();
 		this.resetOpacityOfImages();
 	}
 }
-
+// onload function: call init method on window onload.
 window.onload = function () { 
 	view.init();
 }

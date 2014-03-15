@@ -94,6 +94,12 @@ window.view = {
 			alert('Maximum String Size allowed is Seven, Minimum Size is One.');
 			return false;
 		}
+		this.changePropertyOfElements();
+		this.resetStrings();
+		this.resetTable();
+	},
+	// changePropertyOfElements: changes property of elemants with enableElement, disableElement and changeClass.
+	changePropertyOfElements: function () {
 		this.enableElement('startBtnId');
 		this.disableElement('okBtnId');
 		this.disableElement('str1Id');
@@ -192,9 +198,7 @@ window.view = {
 	// endOfExecution: work at end of code execution and with stop button to reset whole experiment at it's initial state.
 	endOfExecution: function () {
 		this.resetVariablesAtEnd();
-		this.resetStrings();
 		this.resetButtonAndTextField();
-		this.resetTable();
 		var idOfRedText = this.getElementByClass('redClass').id;
 		this.removeColorClass(idOfRedText, 'redClass');
 	},
@@ -242,6 +246,9 @@ window.view = {
 	// compareString: compare two string characters during code execution and show final result at end of code.
 	compareString: function() {
 		this.currentSiblingElement = this.getElementByClass('redClass');
+		if (this.currentSiblingElement.id === 'codeContentSC19') {
+			this.endOfExecution();
+		}
 		this.nextSiblingElement = this.getNextSiblingElement(this.currentSiblingElement);
 		if (this.nextSiblingElement.id === 'codeContentSC2' || this.nextSiblingElement.id === 'codeContentSC6')
 			this.codeExecutionWithColour();
@@ -303,8 +310,6 @@ window.view = {
 		}
 		else if (this.nextSiblingElement.id === 'codeContentSC17' || this.nextSiblingElement.id === 'codeContentSC19' || this.nextSiblingElement.id === 'codeContentSC15') {
 			this.codeExecutionWithColourAndId('codeContentSC19');
-			alert('Code running is Over !');
-			this.endOfExecution();
 		}
 	},
 	// init: calls methods to activate events.	

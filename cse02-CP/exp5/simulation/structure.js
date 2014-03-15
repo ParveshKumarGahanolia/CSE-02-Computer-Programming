@@ -8,8 +8,9 @@ window.model = {
 }
 
 window.view = {
-    stateOfSolution: 1,
-    stateOfExeplation: 0,
+    stateOfSolution: 1, // shows state of solution.
+    stateOfExeplation: 0, // shows state of exeplation.
+    // below strings shows steps, guideline, instruction, and solution during of code execution.
     stepString1: 'Step 1: Define a structure',
     stepString2: 'Step 2: Declare a structure',
     stepString3: 'Step 3: Function to fill a structure',
@@ -137,7 +138,7 @@ window.view = {
         'printf (\"maxBalIndex is %d\", maxBalIndex);</br>' +
         'return src[maxBalIndex];</br>' +
         '}</br>',
-    suggestion1: '\"Please Try Again\"',
+    suggestion1: '\"Try Again\"',
     suggestion2: '',
     // addClickEvent: add EventListener to other methods.
     addClickEvent: function (id, method) {
@@ -203,9 +204,8 @@ window.view = {
         var valueOfTextArea = document.getElementById(id1).value;
         document.getElementById(id2).value = valueOfTextArea;
     },
+    // showDefinitionOfAccount: gives solution for how to define structure.
     showDefinitionOfAccount: function () {
-        //alert('submitBtnId1');
-        //this.checkDefinitionOfAccount();
         this.setInnerHTML('solutionArea', this.solution1);
         this.copyValue('solutionHintArea', 'viewUserCode');
         this.changeClass('yesBtnId', 'button buttonPosition');
@@ -213,8 +213,8 @@ window.view = {
         this.changeClass('submitBtnId', 'button buttonPosition hide');
         this.stateOfExeplation = 1;
     },
+    // showDeclarationStructure: gives solution for how to declare structure.
     showDeclarationStructure: function () {
-         //alert('submitBtnId2');
         this.setInnerHTML('solutionArea', this.solution2);
         this.copyValue('solutionHintArea', 'viewUserCode');
         this.changeClass('yesBtnId', 'button buttonPosition');
@@ -222,8 +222,8 @@ window.view = {
         this.changeClass('submitBtnId', 'button buttonPosition hide');
         this.stateOfExeplation = 2;
     },
+    // showHowToFillAccount: gives solution to fill an account.
     showHowToFillAccount: function () {
-        //alert('submitBtnId3');
         this.setInnerHTML('solutionArea', this.solution3);
         this.copyValue('solutionHintArea', 'viewUserCode');
         this.changeClass('yesBtnId', 'button buttonPosition');
@@ -231,18 +231,17 @@ window.view = {
         this.changeClass('submitBtnId', 'button buttonPosition hide');
         this.stateOfExeplation = 3;
     },
+    // showMaximumBalance: gives solution to find, maximum balance holder.
     showMaximumBalance: function () {
-        //alert('submitBtnId4');
         this.setInnerHTML('solutionArea', this.solution4);
         this.copyValue('solutionHintArea', 'viewUserCode');
         this.changeClass('yesBtnId', 'button buttonPosition');
         this.changeClass('noBtn', 'button buttonPosition');
-        //this.setNewId('yesBtnId', 'yesBtnId');
         this.changeClass('submitBtnId', 'button buttonPosition hide');
         this.stateOfExeplation = 4;
     },
+    // goOnDeclareStructure: gives instructions for how to declare structure.
     goOnDeclareStructure: function () {
-         //alert('yesBtnId1');
         this.setInnerHTML('instructionArea', this.instruction2);
         this.setInnerHTML('stepId', this.stepString2);
         this.setInnerHTML('guideLineId',  this.guidelineString2);
@@ -254,8 +253,8 @@ window.view = {
         this.changeClass('submitBtnId', 'button buttonPosition');
         this.stateOfSolution = 2;
     },
+    // goToFillAccount: gives instructions for how to fill account.
     goToFillAccount: function () {
-        //alert('yesBtnId2');
         this.setInnerHTML('instructionArea', this.instruction3);
         this.setInnerHTML('stepId', this.stepString3);
         this.setInnerHTML('guideLineId',  this.guidelineString3);
@@ -267,6 +266,7 @@ window.view = {
         this.changeClass('submitBtnId', 'button buttonPosition');
         this.stateOfSolution = 3;
     },
+    // goToHandleData: gives instructions to find, maximum balance holder
     goToHandleData: function () {
         //alert('yesBtnId3');
         this.setInnerHTML('instructionArea', this.instruction4);
@@ -280,12 +280,12 @@ window.view = {
         this.eraseString('viewUserCode');
         this.stateOfSolution = 4;
     },
+    // goToEndOfCode: resets whole experiment to it's initial state. 
     goToEndOfCode: function () {
-         //alert('yesBtnId4');
-        alert('Code running is Over !');
         this.stateOfSolution = 1;
         this.setInitialString();
     },
+    // removeErrorOfCode: work when user click on button.
     removeErrorOfCode: function () {
         this.setString('viewUserCode', this.suggestion1);
         this.setInnerHTML('solutionArea', this.suggestion2);
@@ -293,6 +293,7 @@ window.view = {
         this.changeClass('noBtn', 'button buttonPosition hide');
         this.changeClass('submitBtnId', 'button buttonPosition');
     },
+    // setInitialString: works when whole experiment reset in it's initial state.
     setInitialString: function () {
         this.changeClass('submitBtnId', 'button buttonPosition');
         this.changeClass('yesBtnId', 'button buttonPosition hide');
@@ -304,44 +305,7 @@ window.view = {
         this.setString('viewUserCode', '');
         this.setInnerHTML('solutionArea', '');
     },
-
-    // checkDefinitionOfAccount: function () {
-    //    var string = this.getString('solutionHintArea');
-    //    var struct = string.match(/struct/g);
-    //    //alert(struct.length);
-    //    var account = string.match(/account/g);
-    //    //alert(account.length);
-    //    var obr = string.match(/{/g);
-    //    //alert(obr.length);
-    //    var char1 = string.match(/char/g);
-    //    //alert(char1.length);
-    //    var type = string.match(/type/g);
-    //    //alert(type.length);
-    //    var char10 = string.match(/[10]/g);
-    //    //alert(char10.length);
-    //    var holder = string.match(/holder/g);
-    //    //alert(holder.length);
-    //    var char30 = string.match(/[30]/g);
-    //    //alert(char30.length);
-    //    var char20 = string.match(/[20]/g);
-    //    //alert(char20.length);
-    //    var no = string.match(/no/g);
-    //    //alert(no.length);
-    //    var unsigned = string.match(/unsigned/g);
-    //    //alert(unsigned.length);
-    //    var int1 = string.match(/int/g);
-    //    //alert(int1.length);
-    //     var bal = string.match(/bal/g);
-    //    //alert(bal.length);
-    //     var cbr = string.match(/}/g);
-    //    //alert(cbr);
-    //    var coma = string.match(/;/g);
-    //    alert(coma.length);
-    // },
-
-
-
-
+    // createStaticStateOfSolution: work on submit button according to state of experiment solution.
     createStaticStateOfSolution: function () {
         if (this.stateOfSolution === 1) {
             this.showDefinitionOfAccount();
@@ -356,7 +320,7 @@ window.view = {
             this.showMaximumBalance();
         }
     },
-
+    // createStaticStateOfSolution: work on yes button according to state of experiment exeplation.
     createStaticStateOfExeplation: function () {
         if (this.stateOfExeplation === 1) {
             this.goOnDeclareStructure();
@@ -372,13 +336,13 @@ window.view = {
             this.setInitialString();
         }
     },
-
+    // init: calls methods to set Initial String and activate events.
     init: function () {
         this.activateEvents();
         this.setInitialString();
     }
 }
-
+// onload function: call init method on window onload.
 window.onload = function () {
     view.init();
 }

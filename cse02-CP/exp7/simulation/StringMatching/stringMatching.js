@@ -94,8 +94,6 @@ window.view = {
 		this.setInnerHtml('iValue', '');
 		this.setInnerHtml('jValue', '');
 		this.setInnerHtml('kValue', '');
-		this.setValue('str1Id', '');
-		this.setValue('str2Id', '');
 	},
 	/* validationInput: check validation of input that is given by user and if input value is valid 
 	then make text field and ok button disable and make start button enable. */
@@ -106,6 +104,12 @@ window.view = {
 			alert('Maximum String Size allowed is Seven, Minimum Size is One and size of str2 should be less than equal to size of str1');
 			return false;
 		}
+		this.changePropertyOfElements();
+		this.resetStrings();
+		this.resetTable();
+	},
+	// changePropertyOfElements: changes property of elemants with enableElement, disableElement and changeClass.
+	changePropertyOfElements: function () {
 		this.enableElement('startBtnId');
 		this.disableElement('okBtnId');
 		this.disableElement('str1Id');
@@ -206,9 +210,9 @@ window.view = {
 	// endOfExecution: work at end of code execution and with stop button to reset whole experiment at it's initial state.
 	endOfExecution: function () {
 		this.resetVariablesAtEnd();
-		this.resetStrings();
 		this.resetButtonAndTextField();
-		this.resetTable();
+		this.setValue('str1Id', '');
+		this.setValue('str2Id', '');
 		var idOfRedText = this.getElementByClass('redClass').id;
 		this.removeColorClass(idOfRedText, 'redClass');
 	},
@@ -279,6 +283,9 @@ window.view = {
 	// matchString: match two string characters during code execution and show final result at end of code.
 	matchString: function() {
 		this.currentSiblingElement = this.getElementByClass('redClass');
+		if ((this.currentSiblingElement.id === 'codeContentId6' && this.s1i === model.inputString1.length) || this.currentSiblingElement.id === 'codeContentId16') {
+			this.endOfExecution();
+		}
 		this.nextSiblingElement = this.getNextSiblingElement(this.currentSiblingElement);
 		if (this.nextSiblingElement.id === 'codeContentId2' || this.nextSiblingElement.id === 'codeContentId6' || this.nextSiblingElement.id === 'codeContentId8' || this.nextSiblingElement.id === 'codeContentId16')
 			this.codeExecutionWithColour();
@@ -299,8 +306,6 @@ window.view = {
 				this.assignValueiTok();
 			else if (this.s1i === model.inputString1.length) {
 				this.setInnerHtml('outputStr', this.outputStrSM2);
-				alert('Code running is Over !');
-				this.endOfExecution();
 			}
 		}
 		else if (this.nextSiblingElement.id === 'codeContentId9') {
@@ -328,8 +333,6 @@ window.view = {
 				this.assignStringVariableValueiTok();
 		}
 		else if (this.nextSiblingElement.id === 'codeContentId17') {
-			alert('Code running is Over !');
-			this.endOfExecution();
 		}
 		else if (this.nextSiblingElement.id === 'codeContentId19')
 			this.codeExecutionWithColourAndId('codeContentId6');
