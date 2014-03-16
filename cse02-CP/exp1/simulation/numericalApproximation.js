@@ -127,9 +127,6 @@ window.view = {
 		this.resetVariables();
 		this.resetTextFieldValue();
 		this.resetButtonAndTextField();
-		//this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height); // to clear previously drawn canvas.
-		//this.canvasContext.restore(); // restor canvas it's initial state.
-		//this.drawCanvas(); // redraw graph on canvas.
 		var idOfRedText = this.getElementByClass('redClass').id;
 		this.removeColorClass(idOfRedText, 'redClass');
  	},
