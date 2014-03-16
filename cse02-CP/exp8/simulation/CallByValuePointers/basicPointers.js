@@ -192,6 +192,9 @@ window.view = {
 	// continueExecution: show values in memory map  and shows Code Output or Explanation during code execution.
 	continueExecution: function () {
 		this.currentSiblingElement = this.getElementByClass('redClass');
+		if (this.currentSiblingElement.id === 'codeContentBP13') {
+			this.endOfExecution();
+		}
 		this.nextSiblingElement = this.getNextSiblingElement(this.currentSiblingElement);
 		this.codeExecutionWithColour();
 		if (this.nextSiblingElement.id === 'codeContentBP2') {
@@ -229,9 +232,9 @@ window.view = {
 			this.eraseStringFromElement('explanationText', 'outputText', this.outputBP6);
 		else if (this.nextSiblingElement.id === 'codeContentBP13') {
 			this.eraseStringFromElement('outputText', 'explanationText', this.explanationBP9);
-			this.disableElement('nextBtnId');
-			alert('Code running is Over !');
-			this.endOfExecution();
+			// this.disableElement('nextBtnId');
+			// alert('Code running is Over !');
+			// this.endOfExecution();
 		}
 	},
 	// reverseExecution: show values in memory map  and shows Code Output or Explanation during reverse of code execution.
