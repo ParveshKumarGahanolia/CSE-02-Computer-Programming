@@ -9,7 +9,7 @@ body {
     position:absolute; top: 0%; bottom: 0%; right: 0%; left: 0%;
 }
 
-#header {
+.header {
 	position: absolute;
 	top: 0;bottom: 0;left: 0;right: 0;
 	width: 100%;
@@ -18,7 +18,7 @@ body {
 	padding-top: 1.3vmin;
 }
 
-.button, .buttonDisable {
+.button, .buttonDisable{
 	position: relative;
 	padding: 0.5em 1em;
   	border-radius: 0.2em; 
@@ -40,7 +40,7 @@ body {
     cursor: pointer;
 }
 
-#header, .button {
+.header, .button {
 	text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
 	border-color: #3072b3;
     border-bottom-color: #2a65a0;
@@ -63,7 +63,7 @@ body {
     background-image: linear-gradient(#f4f4f4, #ececec);
 }
 
-.buttonDisable::-moz-focus-inner, .button::-moz-focus-inner, .#header::-moz-focus-inner {
+.buttonDisable, .button::-moz-focus-inner {
     padding: 0;
     border: 0;
 }
@@ -80,15 +80,12 @@ body {
 }
 
 .inputDivision, .outputDivision, .executionDivision {
+    top: 11%;
+    height: 87%; 
     position: absolute;
     border: 1px solid #CCC;
     border-radius: 5px;
     color: #464646;
-}
-
-.inputDivision, .outputDivision, .executionDivision {
-    top: 11%;
-    height: 87%; 
 }
 
 .executionDivision {
@@ -109,13 +106,13 @@ body {
 .inputDivisionTitle, .outputDivisionTitle, .executionDivisionTitle {
     text-align: center;
     top: 0%;
+    height: 9%;
     text-decoration: none;
     text-shadow: 1px 1px 0 #fff;
     width: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background-color: #F8F8F8;
-    height: 9%;
 }
 
 .initializePic, .executionPic, .outputPic {
@@ -136,6 +133,7 @@ body {
 	width: 60%;
 	float: left;
 	height: 100%;
+	padding-top: 1.8vmin; 
 }
 
 .executionPic {
@@ -149,6 +147,7 @@ body {
 	width: 50%;
 	float: left;
 	height: 100%;
+	padding-top: 1.8vmin; 
 }
 
 .outputPic {
@@ -162,6 +161,7 @@ body {
 	width: 50%;
 	float: left;
 	height: 100%;
+	padding-top: 1.8vmin; 
 }
 
 .inputDivisionBody {
@@ -175,248 +175,175 @@ body {
 	border-top: 1px solid #CCC;
 }
 
-.instructionText {
-    float: left;
-    text-align: left;
-    width: 95%;
-    min-width: 70px;
-    margin-left: 5%;
-    margin-top: 20px; 
-}
-
-.workingDayImage, .relaxDayImage {
-    position: absolute;
-    height: 100%;
-    width: 50%;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-position:center;
-    cursor: pointer;
-    opacity: .2;
-}
-
-.workingDayImage {
-    left: 0%;
-    top: 0%;
-    background-image: url('working.jpg');
-}
-
-.relaxDayImage {
-    left: 50%;
-    top: 0%;
-    background-image: url('relaxing.jpg');
-}
-
-.margin15 {
-    margin-top: 15px;
-    margin-left: 5px;
-}
-
-.radioButtonHolder {	
-    width: 100%;
-    float: left;
-    font-size: 16px;
-    text-align: left;
-}
-
-.radiobutton {
-    cursor: pointer;
-	margin-left: 7%;
+.simpleLoopBlock, .nestedLoopBlock {
+	height: 35%;
 	float: left;
 }
 
-.radioText {
- 	float: left;
-	text-align: left;
+.instructionText {
+    float: left;
+    width: 80%;
+    min-width: 70px;
+    height: 30%;
+    min-height: 30px;
+    margin-left: 10%;
+    margin-top: 15px; 
+    font-size: 1.1em;
+}
+
+.inputField {
+    text-align: center;
+    font-size: 15px;
+    float: left;
+    margin-left: 10%;
+    height: 30px;
+    width: 80%;
+    min-width: 150px;
+    border: 1px solid #CCC;
+    outline: none;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.switchButton, .loopList {
+	font-size: 13px;
+	min-width: 150px;
+	float: left;
+	margin-left: 10%;
+    height: 30px;
+    width: 80%;
+}
+
+.loopList {
+	margin-bottom: 15px;
+}
+
+.startButton{
+    height: 30px;
+    width: 36%;
+    float: center;
+    font-size: 14px;
+}
+
+.marginBottom {
+	margin-bottom: 40px;
+}
+
+.marginTop {
+	margin-top: 60px;
+}
+
+.nextButton {
+    margin-left: 14px; 
+    height: 30px;
+    width: 36%;
+    float: center;
+    font-size: 14px;
 }
 
 .resultDisplay {
     position: absolute;
+    padding-top: 2%;
     top: 9%;
     left: 0%;
     width: 100%;
-    height: 90%;
+    height: 88%;
+    text-align: center;
     border-top: 1px solid #CCC;
 }
 
-.imageBlock {
-    position: absolute;
-    top: 2%;
-    left: 2%;
-    width: 96%;
-    height: 46%;
-}
-
 .stepExecutionDisplay {
-    padding-top: 2%;
     padding-left: 2%;
+    padding-top: 2%;
     overflow-x: auto;
     position: absolute;
     top: 9%;
     left: 0%;
     width: 97.8%;
     height: 88%;
-    text-align: left;
     border-top: 1px solid #CCC;
+    line-height: 140%;
+    text-align: left;
+    font-size: 1.1em;
 }
 
 .hide {
 	display: none;
 }
 
-.show {
+.showDiv {
     display: block;
+    text-align: left;
+    color: black;
 }
 
-.marginTop{
-    margin-top: 20px;
-}
-
-.textField{
-    text-align: center;
-    font-size: 15px;
-    float: left;
-    margin-left: 5px;
-    height: 26px;
-    width: 30%;
-    min-width: 60px;
-    border: 1px solid #CCC;
-    outline: none;
-    border-radius: 3px;
-}
-
-.dText{
-    float: left;
-    width: 45px;
-    height: 20px;
-    margin-top: 5px;
-    margin-left: 17%;
-}
-
-.DayInputText{
-    margin-top: 10px;
-    float: left;
-    width: 100%;
-    height: 27px;
-}
-
-.localVariables{
-    position: absolute;
-    width: 100%;
-    height: 30%;
-    left: 0%;
-    top: 60%; 
-}
-
-.dayIconDivision{
-    position: absolute;
-    width: 100%;
-    height: 10%;
-    left: 0%;
-    top: 50%;
-    border-bottom: 1px solid #CCC;  
-}
-
-.mondayIcon, .tuesdayIcon, .wednesdayIcon, .thursdayIcon, .fridayIcon, .saturdayIcon, .sundayIcon{
-    width: 14.2%;
-    float: left;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-position:center;
-    opacity: .3;
-}
-
-.mondayIcon{
-    background-image: url('monday.png');
-}
-
-.tuesdayIcon{
-    background-image: url('tuesday.png');
-}
-
-.wednesdayIcon{
-    background-image: url('wednesday.png');
-}
-
-.thursdayIcon{
-    background-image: url('thursday.png');
-}
-
-.fridayIcon{
-    background-image: url('friday.png');
-}
-
-.saturdayIcon{
-    background-image: url('saturday.png');
-}
-
-.sundayIcon{
-    background-image: url('sunday.png');
-}
-
-.localVariabals{
-    position: absolute;
-    width: 100%;
-    height: 35%;
-    left: 0;
-    top: 65%;
-}
-
-.localVariableText{
-    float: left;
-    font-size: 1.2em;
-    width: 20%;
-    height: 20%;
-    text-align: right;
-}
-
-.localVariableValue{
-    float: left;
-    font-size: 1.2em;
-    width: 75%;
-    margin-left: 5%;
-    height: 20%;
+.showDivInRed {
+    display: block;
+    color: red;
     text-align: left;
 }
 
-.redClass {
-  display: block;
-  color: red;
-  font-weight: bold;
+.localVariableTitle {
+	position: absolute;
+    top: 3%;
+    left: 5%;
+    width: 90%;
+    height: 6%;
+    text-align: left;
+    font-size: 1.2em;
+    border-bottom: 1px solid #CCC;
+}
+
+.localVariables {
+	position: absolute;
+    top: 12%;
+    left: 5%;
+    width: 90%;
+    height: 22%;
+    font-size: 1.1em;
+}
+
+.variableBox {
+	width: 80%;
+	height: 33%;
+	float: left;
+	margin-left: 10%
+
+}
+
+.variableName {
+	float: left;
+	width: 15%;
+	height: 99%;
+	text-align: left;
+}
+
+.variableValue {
+	float: left;
+	width: 70%;
+	height: 99%;
+	text-align: left;
+}
+
+.outputResult {
+	position: absolute;
+    padding-top: 3%;
+    top: 36%;
+    left: 5%;
+    width: 90%;
+    height: 60%;
+    border: 1px solid #CCC;
+    font-size: 1.2em;
+    border-radius: 5px;
+    overflow: auto;
+    line-height: 140%;
 }
 
 @media only screen and (min-width: 1000px) {
 
 .inputDivisionTitle, .outputDivisionTitle, .executionDivisionTitle {
-    font-size: 1.3em;
+    font-size: 1.4em;
 }
-
-.initializeText, .executionText, .outputText {
-    padding-top: 1.8vmin; 
-}
-
-.radioButtonHolder {    
-    height: 24px;
-    font-size: 1em;
-} 
-
-.radiobutton {
-    width: 10%;
-    height: 60%;
-}
-
-.instructionText {
-    height: 7%;
-    font-size: 2.5vh;
-}
-
-.radioText {
-    font-size: 16px;
-    width: 70%;
-    height: 60%;
-}
-
 }
 
 @media only screen and (max-width: 999px) and ( min-width: 600px) {
@@ -424,36 +351,4 @@ body {
 .inputDivisionTitle, .outputDivisionTitle, .executionDivisionTitle {
     font-size: 1.2em;
 }
-
-.stepExecutionDisplay {
-    line-height: 140%;
-    font-size: 1.2em;
-}
-
-.initializeText, .executionText, .outputText {
-    padding-top: 1.8vmin; 
-}
-
-.radioButtonHolder {    
-    height: 40px;
-    font-size: 1.2em;
-} 
-
-.radiobutton {
-    width: 25%;
-    height: 55%;
-}
-
-.instructionText {
-    height: 8%;
-    font-size: 20px;
-}
-
-.radioText {
-    font-size: 1.2em;
-    width: 60%;
-    height: 60%;
-   
-}
-
 }

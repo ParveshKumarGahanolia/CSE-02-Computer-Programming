@@ -35,7 +35,7 @@ body {
     *display: inline;
     text-decoration: none;
     display: inline-block;
-  }
+}
 
 #header, .button {
 	text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
@@ -60,7 +60,7 @@ body {
     background-image: linear-gradient(#f4f4f4, #ececec);
 }
 
-.buttonDisable, .button::-moz-focus-inner {
+.buttonDisable::-moz-focus-inner, .button::-moz-focus-inner {
     padding: 0;
     border: 0;
 }
@@ -82,11 +82,13 @@ body {
     position: absolute;
     border: 1px solid #CCC;
     border-radius: 5px;
+    color: #464646;
 }
 
 .executionDivision {
     left: 25%;
     width: 30%;
+    overflow-x: auto;
 }
 
 .inputDivision {
@@ -106,8 +108,6 @@ body {
     text-decoration: none;
     text-align: center;
     text-shadow: 1px 1px 0 #fff;
-    color: #464646;
-    font-size: 3vmin;
     width: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -131,8 +131,7 @@ body {
 .initializeText {
 	width: 60%;
 	float: left;
-	height: 100%;
-	padding-top: 1.8vmin; 
+	height: 100%; 
 }
 
 .executionPic {
@@ -146,7 +145,6 @@ body {
 	width: 50%;
 	float: left;
 	height: 100%;
-	padding-top: 1.8vmin; 
 }
 
 .outputPic {
@@ -160,7 +158,6 @@ body {
 	width: 50%;
 	float: left;
 	height: 100%;
-	padding-top: 1.8vmin; 
 }
 
 .inputDivisionBody {
@@ -172,6 +169,7 @@ body {
 	text-align: center;
 	font-size: 1em;
 	border-top: 1px solid #CCC;
+    overflow: auto;
 }
 
 .questionBlock {
@@ -186,19 +184,8 @@ body {
     text-align: left;
     width: 95%;
     min-width: 70px;
-    font-size: 2.5vh;
     margin-left: 5%;
     margin-top: 20px; 
-}
-
-.questionText {
-    height: 5%;
-    min-height: 30px; 
-}
-
-.questionTextRich {
-    height: 10%;
-    min-height: 50px;
 }
 
 .programInitialization, .computeArea, .programTail{
@@ -244,6 +231,7 @@ body {
     width: 50%;
     background-repeat: no-repeat;
     background-color: transparent;
+    background-position:center;
     cursor: pointer;
     opacity: 0.3;
 }
@@ -307,31 +295,14 @@ body {
     position: absolute;
     left: 0%;
     width: 100%;
-    height: 24.9%;
 }
 
-.functionForSquare{
-    top: 0%;
+.functionForSquare, .functionForRectangle, .functionForTriangle{
     border-bottom: 1px dashed #CCC;
-}
-
-.functionForRectangle {
-    top: 25%;
-    border-bottom: 1px dashed #CCC;
-}
-
-.functionForTriangle {
-    top: 50%;
-    border-bottom: 1px dashed #CCC;
-}
-
-.functionForCircle {
-    top: 75%;
 }
 
 .textColor {
 	color: #727272;
-	text-align: left;
 	margin-right: 5%;
 	opacity: 0.5;
 }
@@ -342,6 +313,7 @@ body {
 	min-width: 150px;
 	float: left;
 	margin-top: 20px;
+    margin-bottom: 40px;
 	margin-left: 10%;
     height: 30px;
     width: 80%;
@@ -349,23 +321,18 @@ body {
 
 .radioButtonHolder {	
     width: 100%;
-    height: 3.5%;
     float: left;
-    font-size: 16px;
     text-align: left;
 }
 
 .radiobutton {
 	margin-left: 7%;
 	float: left;
-	width: 10%;
-    height: 75%;
+    cursor: pointer;
 }
 
 .radioText {
  	float: left;
-	width: 70%;
-    height: 5%;
 	text-align: left;
 }
 
@@ -388,12 +355,10 @@ body {
 
 .stepExecutionDisplay {
     padding-left: 2%;
-    overflow-x: auto;
-    font-size: 3vmin;
     position: absolute;
     top: 9%;
     left: 0%;
-    width: 97.8%;
+    width: 98%;
     height: 90%;
     text-align: center;
     border-top: 1px solid #CCC;
@@ -420,4 +385,126 @@ body {
     width: 90%;
     margin-left: 5%;
     color: #464646;
+}
+
+@media only screen and (min-width: 1000px) {
+
+.inputDivisionTitle, .outputDivisionTitle, .executionDivisionTitle {
+    font-size: 1.3em;
+}
+
+.initializeText, .executionText, .outputText {
+    padding-top: 1.8vmin; 
+}
+
+.functionForSquare, .functionForRectangle, .functionForTriangle, .functionForCircle {
+    height: 24.9%;
+    overflow: auto;
+}
+
+.functionForSquare{
+    top: 0%;
+}
+
+.functionForRectangle {
+    top: 25%;
+}
+
+.functionForTriangle {
+    top: 50%;
+}
+
+.functionForCircle {
+    top: 75%;
+}
+
+.radioButtonHolder {    
+    height: 24px;
+} 
+
+.radiobutton {
+    width: 12%;
+    height: 60%;
+}
+
+.radioText {
+    font-size: 1em;
+    width: 68%;
+    height: 55%;
+}
+
+.questionText {
+    height: 5%;
+    min-height: 30px; 
+    font-size: 1em;
+}
+
+.questionTextRich {
+    height: 9%;
+    min-height: 50px;
+    font-size: 1em;
+}
+
+}
+
+@media only screen and (max-width: 999px) and ( min-width: 600px) {
+
+.inputDivisionTitle, .outputDivisionTitle, .executionDivisionTitle {
+    font-size: 1.2em;
+}
+
+.stepExecutionDisplay {
+    line-height: 130%;
+    font-size: 1.2em;
+}
+
+.initializeText, .executionText, .outputText {
+    padding-top: 1.9vmin; 
+}
+
+.functionForSquare, .functionForRectangle, .functionForTriangle, .functionForCircle {
+    height: 160px;
+}
+
+.functionForSquare{
+    top: 0px;
+}
+
+.functionForRectangle {
+    top: 164px;
+}
+
+.functionForTriangle {
+    top: 324px;
+}
+
+.functionForCircle {
+    top: 486px;
+}
+
+.radioButtonHolder {    
+    height: 40px;
+} 
+
+.radiobutton {
+    width: 25%;
+    height: 57%;
+}
+
+.radioText {
+    font-size: 1.2em;
+    width: 60%;
+    height: 60%; 
+}
+
+.questionText {
+    height: 15%; 
+    font-size: 1.2em;
+}
+
+.questionTextRich {
+    height: 15%;
+    font-size: 1.2em;
+}
+
 }

@@ -112,7 +112,6 @@ body {
     text-decoration: none;
     text-align: center;
     text-shadow: 1px 1px 0 #fff;
-    font-size: 3vmin;
     width: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -141,7 +140,6 @@ body {
 	width: 60%;
 	float: left;
 	height: 100%;
-	padding-top: 1.8vmin; 
 }
 
 .executionPic {
@@ -155,7 +153,6 @@ body {
 	width: 50%;
 	float: left;
 	height: 100%;
-	padding-top: 1.8vmin; 
 }
 
 .outputPic {
@@ -169,7 +166,6 @@ body {
 	width: 50%;
 	float: left;
 	height: 100%;
-	padding-top: 1.8vmin; 
 }
 
 .inputDivisionBody {
@@ -188,7 +184,6 @@ body {
     text-align: center;
     width: 95%;
     min-width: 70px;
-    font-size: 2.5vh;
     margin-left: 5%;
     height: 5%;
 }
@@ -228,7 +223,7 @@ body {
 }
 
 .marginTop{
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .textField{
@@ -335,7 +330,44 @@ body {
 .flag_text{
   float: left;
   text-align: center;
-  font-size: .8em;
-  margin-top: 8%;
+  font-size: .9em;
+  margin-top: 10px;
   width: 100%;
+}
+
+@media only screen and (min-width: 1000px) {
+
+.inputDivisionTitle, .outputDivisionTitle, .executionDivisionTitle {
+    font-size: 1.3em;
+}
+
+.initializeText, .executionText, .outputText {
+    padding-top: 1.8vmin; 
+}
+
+.instructionText {
+    font-size: 1em;
+}
+
+}
+
+@media only screen and (max-width: 999px) and ( min-width: 600px) {
+
+.inputDivisionTitle, .outputDivisionTitle, .executionDivisionTitle {
+    font-size: 1.2em;
+}
+
+.stepExecutionDisplay {
+    line-height: 140%;
+    font-size: 1.2em;
+}
+
+.initializeText, .executionText, .outputText {
+    padding-top: 1.8vmin; 
+}
+
+.instructionText {
+    font-size: 1em;
+}
+
 }

@@ -57,19 +57,17 @@ window.view = {
 	},
 	switchMultipleDivForNestedLoop: function() {
 		this.replaceDiv('inputDivisionSimpleLoop','nested')
-		this.changeClass('nestedLocalI', 'nestedlocalVariableI')
-		this.changeClass('nestedLocalJ', 'nestedlocalVariableJ')
-		this.changeClass('nestedLocalK', 'nestedlocalVariableK')
-		this.changeClass('simpleLocalI', 'hide')
-		this.changeClass('simpleLocalFact', 'hide')
+		this.changeClass('nestedLoopLocalVariables', 'localVariables')
+		this.changeClass('simpleLoopLocalVariables', 'hide')
+		this.changeClass('headerNestedLoop', 'header')
+		this.changeClass('headerSimpleLoop', 'hide')
 	},
 	switchMultipleDivForSimpleLoop: function() {
 		this.replaceDiv('nested','inputDivisionSimpleLoop')
-		this.changeClass('nestedLocalI', 'hide')
-		this.changeClass('nestedLocalJ', 'hide')
-		this.changeClass('nestedLocalK', 'hide')
-		this.changeClass('simpleLocalI', 'localVariableI')
-		this.changeClass('simpleLocalFact', 'localVariableFact')
+		this.changeClass('simpleLoopLocalVariables', 'localVariables')
+		this.changeClass('nestedLoopLocalVariables', 'hide')
+		this.changeClass('headerSimpleLoop', 'header')
+		this.changeClass('headerNestedLoop', 'hide')
 	},
 	changeClass: function(id, className) {
 		document.getElementById(id).className = className
@@ -125,10 +123,16 @@ window.view = {
 		this.hideLoop('nestedLoopContent')
 	},
 	printSpace: function() {
-		document.getElementById('resultDisplay').innerHTML += '_'
+		var span = document.createElement('span')
+		span.style.color = '#FF4208'
+		span.innerHTML = '_'
+		document.getElementById('resultDisplay').appendChild(span)
 	},
 	printStar: function() {
-		document.getElementById('resultDisplay').innerHTML += '*'
+		var span = document.createElement('span')
+		span.style.color = '#0389C1'
+		span.innerHTML = '*'
+		document.getElementById('resultDisplay').appendChild(span)
 		this.highlightNextStep()
 	},
 	insertNewLine: function() {
@@ -151,12 +155,12 @@ window.view = {
 		document.getElementById('localVariableFact').innerHTML = nextState
 	},
 	clearDivs: function() {
+		document.getElementById('localVariableI').innerHTML = ''
+    	document.getElementById('localVariableFact').innerHTML = ''
 		document.getElementById('resultDisplay').innerHTML = ''
+		document.getElementById('nestedlocalVariableK').innerHTML = ''
 		document.getElementById('nestedlocalVariableI').innerHTML = ''
     	document.getElementById('nestedlocalVariableJ').innerHTML = ''
-    	document.getElementById('nestedlocalVariableK').innerHTML = ''
-    	document.getElementById('localVariableI').innerHTML = ''
-    	document.getElementById('localVariableFact').innerHTML = ''
 	},
     startBtn: function() {
     	this.getInput()
@@ -176,7 +180,12 @@ window.view = {
 		 	this.displayLoop('dowhileLoopContent', 'codeContentDoWhile1')
 		}
 		this.disableButton('btnStart')
+		this.changeClass( 'btnStart', 'buttonDisable startButton')
 		this.enableButton('btnNext')
+		this.changeClass( 'btnNext', 'button nextButton')
+		this.disableButton('loopList')
+		this.changeClass( 'loopList', 'buttonDisable loopList')
+		this.disableButton('simpleLoopInput')
 	},
 	updateModelAndShowResult: function() {
 		if( model.inp >= 1)
@@ -200,7 +209,14 @@ window.view = {
 		alert('code running is over')
 		clearInterval(this.stampSimple)
 		this.disableButton('btnNext')
+		this.changeClass( 'btnNext', 'buttonDisable nextButton')
 		this.enableButton('btnStart')
+		this.changeClass( 'btnStart', 'button startButton')
+		this.enableButton('loopList')
+		this.changeClass( 'loopList', 'button loopList')
+		this.enableButton('simpleLoopInput')
+		document.getElementById('simpleLoopInput').value = ''
+		document.getElementById('loopList').options.selectedIndex = 0
 	},
 	endTheNestedLoopCode: function() {
 		alert('code running is over')
@@ -209,8 +225,12 @@ window.view = {
 		this.highlightNextStep()
 		this.i = 1
 		this.n = 0
-		this.disableButton('nestedNextBtn')
 		this.enableButton('nestedStartBtn')
+		this.changeClass( 'nestedStartBtn', 'button startButton')
+		this.disableButton('nestedNextBtn')
+		this.changeClass( 'nestedNextBtn', 'buttonDisable nextButton')
+		this.enableButton('nestedLoopInput')
+		document.getElementById('nestedLoopInput').value = ''
 	},
 	nextBtn: function () {
 		this.lastRedDiv = this.getLastHighlightedDiv()
@@ -262,7 +282,10 @@ window.view = {
 			document.getElementById('resultDisplay').innerHTML += '<br>'
 			this.copy = model.nestedInp
 			this.disableButton('nestedStartBtn')
+			this.changeClass( 'nestedStartBtn', 'buttonDisable startButton')
 			this.enableButton('nestedNextBtn')
+			this.changeClass( 'nestedNextBtn', 'button nextButton')
+			this.disableButton('nestedLoopInput')
 		}	
 	},	
 	processNestedLoopStep: function(stepId) {
