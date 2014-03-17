@@ -42,21 +42,21 @@ window.view = {
 	changeClass: function(id, className) {
 		document.getElementById(id).className = className
 	},
-    // enableElement: makes element enable.
-    enableElement: function (id) {
-    	document.getElementById(id).disabled = false;
-    },
-    // disableElement: makes element disable.
-    disableElement: function (id) {
-    	document.getElementById(id).disabled = true;
-    },
-    // replaceElement: replace one element by another element.
-    replaceElement: function (id1, id2) {
-    	document.getElementById(id1).style.display = 'none';
-    	document.getElementById(id2).style.display = 'block';  	 
-    },
+    	// enableElement: makes element enable.
+    	enableElement: function (id) {
+    		document.getElementById(id).disabled = false;
+	},
+    	// disableElement: makes element disable.
+    	disableElement: function (id) {
+    		document.getElementById(id).disabled = true;
+    	},
+    	// replaceElement: replace one element by another element.
+    	replaceElement: function (id1, id2) {
+    		document.getElementById(id1).style.display = 'none';
+    		document.getElementById(id2).style.display = 'block';  	 
+    	},
 	// setValue: set given value to a element.
-    setValue: function (id, value) {
+    	setValue: function (id, value) {
 		document.getElementById(id).value = value;
 	},
 	// getValue: get value from element.
@@ -246,23 +246,23 @@ window.view = {
  		this.canvasContext.fill();
  	},
  	// displayText: draws given text on canvasContext according given x and y coordinates.
-    displayText: function (text, x, y) {
-    	this.canvasContext.beginPath();
-       	this.canvasContext.font = 'italic 20px Arial';
+    	displayText: function (text, x, y) {
+    		this.canvasContext.beginPath();
+       		this.canvasContext.font = 'italic 20px Arial';
 		this.canvasContext.fillText(text, x, y);
-    },
-    // displayTextWithColour: draws given text  with colour on canvasContext according given x and y coordinates.
-    displayTextWithColour: function (text, x, y, color) {
-    	this.canvasContext.beginPath();
-       	this.canvasContext.font = 'italic 20px Arial';
-       	this.canvasContext.fillStyle = color;
+    	},
+    	// displayTextWithColour: draws given text  with colour on canvasContext according given x and y coordinates.
+    	displayTextWithColour: function (text, x, y, color) {
+    		this.canvasContext.beginPath();
+       		this.canvasContext.font = 'italic 20px Arial';
+       		this.canvasContext.fillStyle = color;
 		this.canvasContext.fillText(text, x, y);		
-    },
-    // displayFigures: display figures on canvasContext according given x and y coordinates.
-    displayFigures: function () {
-    	this.drawDots();
-    	this.drawFillRectangle();
-    	this.drawCircle(75, 75, '#000000');
+    	},
+    	// displayFigures: display figures on canvasContext according given x and y coordinates.
+    	displayFigures: function () {
+    		this.drawDots();
+    		this.drawFillRectangle();
+    		this.drawCircle(75, 75, '#000000');
 		this.drawCircle(275, 75, '#000000');
 		this.drawCircle(75, 325, '#000000');
 		this.drawCircle(275, 325, '#000000');
@@ -271,13 +271,13 @@ window.view = {
 		this.displayText('(x3, y3)', 265, 345);
 		this.displayText('(x4, y4)', 75, 345);
 		this.canvasContext.save();
-    },
+    	},
 	/* validationInput: check validation of input that is given by user and if input value is valid 
 	then make text field and ok button disable and make start button enable. */
 	validationInput: function () {
-    	var valueOfX = this.getValue('textFieldXId');
-    	var valueOfY = this.getValue('textFieldYId');
-    	if ((valueOfX === '' || valueOfY === '') || isNaN(valueOfX) || isNaN(valueOfY)) {
+    		var valueOfX = this.getValue('textFieldXId');
+    		var valueOfY = this.getValue('textFieldYId');
+    		if ((valueOfX === '' || valueOfY === '') || isNaN(valueOfX) || isNaN(valueOfY)) {
 			alert('Enter Numeric Values Only');
 			return false;
 		}
@@ -294,8 +294,8 @@ window.view = {
 		this.setInnerHtml('yInnerText', model.valueOfY);
 		this.drawCircle(model.valueOfX, model.valueOfY, '#FF2400');
 		this.displayTextWithColour('(x, y)', model.valueOfX + 10, model.valueOfY, '#FF2400');
-    },
-    // changePropertyOfElements: changes property of elemants with enableElement, disableElement and changeClass.
+    	},
+    	// changePropertyOfElements: changes property of elemants with enableElement, disableElement and changeClass.
 	changePropertyOfElements: function () {
 		this.disableElement('loopList');
 		this.disableElement('textFieldXId');
@@ -306,7 +306,7 @@ window.view = {
 		this.changeClass('okBtnId', 'buttonDisable okButton');
 		this.changeClass('loopList', 'buttonDisable expList');	
 	},
-    // startExperiment: work to start code execution.
+    	// startExperiment: work to start code execution.
 	startExecution: function () {
 		this.changeClass('startBtnId', 'buttonDisable startButton margin15 hide');
 		this.changeClass('nextBtnId', 'button nextButton margin15');
