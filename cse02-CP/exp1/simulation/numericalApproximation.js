@@ -11,7 +11,7 @@ window.model = {
 	//  computeSum: compute total sum of area under cos curve.
 	computeSum: function () {
     	this.sum = this.sum + Math.cos(2 * Math.PI/13 * this.inputValueA) * this.width;
-    },
+    	},
 	/* incrementInWidth: compute increment in inputValueA, that represent 
 	total width of curve from starting point to current point */
 	incrementInWidth: function () {
