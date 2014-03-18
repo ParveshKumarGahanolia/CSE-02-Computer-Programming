@@ -198,20 +198,17 @@ body{
 .inputDivisionBody{
     float: left;
     width:100%;
-    height:80%;
+    height:79%;
     text-align: center;
     font-size: 1em;
     border-top: 1px solid #CCC;
     overflow-x: auto;
 }
 
-.warningText1, .warningText2, .warningText3{
-    float: left;
+.warningText {
     margin-left: 5%;
-    margin-top: 10px;
     width: 90%;
-    height: 60px;
-    text-align:center;
+    text-align: left;
 }
 
 .FirstInputBlock{
@@ -382,6 +379,5 @@ body{
 .experimentText, .executionText, .outputText {
     padding-top: 1.4vmin; 
 }
-
 
 }
