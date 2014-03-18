@@ -82,8 +82,6 @@ window.view = {
 		this.setInnerHtml('jVariable', '');
 		this.setInnerHtml('iValue', '');
 		this.setInnerHtml('jValue', '');
-		this.setValue('str1Id', '');
-		this.setValue('str2Id', '');
 	},
 	/* validationInput: check validation of input that is given by user and if input value is valid 
 	then make text field and ok button disable and make start button enable. */
@@ -199,6 +197,8 @@ window.view = {
 	endOfExecution: function () {
 		this.resetVariablesAtEnd();
 		this.resetButtonAndTextField();
+		this.setValue('str1Id', '');
+		this.setValue('str2Id', '');
 		var idOfRedText = this.getElementByClass('redClass').id;
 		this.removeColorClass(idOfRedText, 'redClass');
 	},
