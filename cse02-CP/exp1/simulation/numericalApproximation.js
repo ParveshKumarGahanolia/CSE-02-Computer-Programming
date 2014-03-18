@@ -232,7 +232,7 @@ window.view = {
 	// drawRectangle: draw rectangle according x and y coordinates values.
 	drawRectangle: function (xCoordinates, yCoordinates, width, high) {
 		this.canvasContext.beginPath();
-		this.canvasContext.globalAlpha= 0.6;
+		this.canvasContext.globalAlpha= 0.8;
 		this.canvasContext.fillStyle='#9BBB5A';
 		this.canvasContext.fillRect(xCoordinates, yCoordinates, width, high);
 	},
