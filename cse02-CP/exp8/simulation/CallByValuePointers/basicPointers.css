@@ -100,6 +100,7 @@ body {
 
 .outputDivisionTitle, .executionDivisionTitle {
     top: 0%;
+    color: #2a65a0;
     height: 10%;
     text-decoration: none;
     text-align: center;
@@ -169,7 +170,7 @@ body {
     top: 0%;
     height: 22%;
     text-decoration: none;
-    text-align: center;
+    color: #2a65a0;
     text-shadow: 1px 1px 0 #fff;
     background-color: #F8F8F8;
     border-top-left-radius:5px;
@@ -185,9 +186,9 @@ body {
 }
 
 .initializePic {
-	margin-top:1.4vh;
+	margin-top:1vh;
 	width: 25%;
-	background-image: url('initIcon.png');
+	background-image: url('edit.png');
 	margin-left: 10%;
 	float: left;
 	height: 100%;

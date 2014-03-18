@@ -109,6 +109,7 @@ body {
     text-decoration: none;
     text-shadow: 1px 1px 0 #fff;
     width: 100%;
+    color: #2a65a0;
     background-color: #F8F8F8;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -315,14 +316,14 @@ body {
 .tableDiv {
     float: left;
     width: 90%;
-    height: 9%;
+    height: 8%;
     margin-left: 5%;
 
 }
 
 .table1 { 
     float: left;
-    font-size: .8em;
+    font-size: 1em;
     height: 98%;
     width: 100%;
     border: 1px solid #CCC;
@@ -345,8 +346,9 @@ body {
 
 .table2 {
     float: left;
-    margin: 5%;
-    font-size: .8em;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 1em;
     height: 100%;
     width: 90%; 
 }

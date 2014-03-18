@@ -109,6 +109,7 @@ body {
 .inputDivisionTitle, .outputDivisionTitle, .executionDivisionTitle {
     text-align: center;
     top: 0%;
+    color: #2a65a0;
     text-decoration: none;
     text-align: center;
     text-shadow: 1px 1px 0 #fff;

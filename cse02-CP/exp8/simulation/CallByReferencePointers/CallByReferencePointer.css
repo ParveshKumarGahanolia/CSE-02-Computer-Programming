@@ -105,7 +105,7 @@ body {
     text-decoration: none;
     text-align: center;
     text-shadow: 1px 1px 0 #fff;
-    color: #464646;
+    color: #2a65a0;
     width: 100%;
     background-color: #F8F8F8;
     border-top-left-radius:5px;
@@ -172,7 +172,7 @@ body {
     height: 22%;
     text-decoration: none;
     text-shadow: 1px 1px 0 #fff;
-    color: #464646;
+    color: #2a65a0;
     background-color: #F8F8F8;
     border-top-left-radius:5px;
 	border-top-right-radius:5px;
@@ -187,9 +187,9 @@ body {
 }
 
 .initializePic {
-	margin-top:1.4vh;
+	margin-top:1vh;
 	width: 25%;
-	background-image: url('initIcon.png');
+	background-image: url('edit.png');
 	margin-left: 10%;
 	float: left;
 	height: 100%;

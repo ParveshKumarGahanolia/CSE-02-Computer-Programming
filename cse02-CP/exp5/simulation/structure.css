@@ -85,6 +85,7 @@ body {
     position: absolute;
     border: 1px solid #CCC;
     border-radius: 5px;
+    color: #464646;
 }
 
 .executionDivision {
@@ -99,12 +100,12 @@ body {
 
 .outputDivisionTitle, .executionDivisionTitle {
     text-align: center;
+    color: #2a65a0;
     top: 0%;
     height: 13%;
     text-decoration: none;
     text-align: center;
     text-shadow: 1px 1px 0 #fff;
-    color: #464646;
     width: 100%;
     background-color: #F8F8F8;
     border-top-left-radius:5px;
@@ -113,6 +114,7 @@ body {
 
 .codeOutputDivision, .codeExplanationDivision {
 	position: absolute;
+    color: #464646;
     top: 62%;
     height: 35%;
     border:1px solid #CCC;
@@ -180,7 +182,7 @@ body {
     text-decoration: none;
     text-align: center;
     text-shadow: 1px 1px 0 #fff;
-    color: #464646;
+    color: #2a65a0;
     background-color: #F8F8F8;
     border-top-left-radius:5px;
 	border-top-right-radius:5px;
