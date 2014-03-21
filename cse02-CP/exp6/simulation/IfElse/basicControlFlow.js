@@ -441,7 +441,7 @@ window.view = {
 		if ((this.nextSiblingElement.id === 'codeContentIfElseIf12Id' || this.nextSiblingElement.id === 'codeContentIfElseIf14Id' || this.nextSiblingElement.id === 'codeContentIfElseIf16Id') && (75 <= model.valueOfX) && (model.valueOfX <= 275) && (75 <= model.valueOfY) && (model.valueOfY <= 325))	{
 			this.changeFlagValue('flagValue1', this.nextOfnextSiblingElement.id, '1');
 			if ((this.nextSiblingElement.id === 'codeContentIfElseIf16Id') && (75 <= model.valueOfX) && (model.valueOfX <= 275) && (75 <= model.valueOfY) && (model.valueOfY <= 325)) {
-				this.displayTextWithColour('Output: INSIDE', 100, 50, '#FF2400');
+				this.displayTextWithColour('Output: INSIDE', 100, 40, '#FF2400');
 			}
 		}
 		if (this.nextSiblingElement.id ==='codeContentIfElseIf6Id' || this.nextSiblingElement.id ==='codeContentIfElseIf10Id') 
@@ -450,7 +450,7 @@ window.view = {
 			this.codeExecutionWithColourAndId('codeContentIfElseIf19Id');
 		if (this.nextSiblingElement.id === 'codeContentIfElseIf20Id') {
 			this.codeExecutionWithColourAndId('codeContentIfElseIf21Id');
-			this.displayTextWithColour('Output: OUTSIDE', 100, 50, '#FF2400');
+			this.displayTextWithColour('Output: OUTSIDE', 100, 40, '#FF2400');
 		}
 		if (this.nextSiblingElement.id === 'codeContentIfElseIf18Id' || this.nextSiblingElement.id === 'codeContentIfElseIf22Id') {
 			this.codeExecutionWithColourAndId('codeContentIfElseIf23Id');
